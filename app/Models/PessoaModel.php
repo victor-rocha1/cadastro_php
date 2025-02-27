@@ -1,22 +1,9 @@
 <?php
-
-// Função para conectar ao banco de dados
-function conectarBanco() {
-    $host = 'localhost';
-    $db_name = 'cadastro_pessoas';
-    $username = 'root';
-    $password = '';
-
-    try {
-        return new PDO("mysql:host={$host};dbname={$db_name}", $username, $password);
-    } catch (PDOException $exception) {
-        die("Erro de conexão: " . $exception->getMessage());
-    }
-}
+require_once '../app/Helpers/Database.php';  // Incluir o arquivo Database.php
 
 // Função para buscar pessoas por nome ou CPF
 function buscarPessoas($pesquisar) {
-    $conn = conectarBanco();
+    $conn = conectarBanco();  // Usando a função do Database.php
     $sql = "SELECT * FROM pessoas WHERE nome LIKE :pesquisar OR cpf = :pesquisar";
     $stmt = $conn->prepare($sql);
     $stmt->bindValue(':pesquisar', "%$pesquisar%");
@@ -25,20 +12,22 @@ function buscarPessoas($pesquisar) {
 }
 
 // Função para cadastrar uma nova pessoa no banco de dados
-function cadastrarPessoaNoBanco($dados) {
+function cadastrarPessoaNoBanco($pessoa) {
     $conn = conectarBanco();
-    $sql = "INSERT INTO pessoas (nome, nome_social, cpf, nome_pai, nome_mae, telefone, email) 
+    $sql = "INSERT INTO pessoas (nome, nome_social, cpf, nome_pai, nome_mae, telefone, email)
             VALUES (:nome, :nome_social, :cpf, :nome_pai, :nome_mae, :telefone, :email)";
-    
+
     $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':nome', $dados['nome']);
-    $stmt->bindParam(':nome_social', $dados['nome_social']);
-    $stmt->bindParam(':cpf', $dados['cpf']);
-    $stmt->bindParam(':nome_pai', $dados['nome_pai']);
-    $stmt->bindParam(':nome_mae', $dados['nome_mae']);
-    $stmt->bindParam(':telefone', $dados['telefone']);
-    $stmt->bindParam(':email', $dados['email']);
-    
+    $stmt->bindParam(':nome', $pessoa['nome']);
+    $stmt->bindParam(':nome_social', $pessoa['nome_social']);
+    $stmt->bindParam(':cpf', $pessoa['cpf']);
+    $stmt->bindParam(':nome_pai', $pessoa['nome_pai']);
+    $stmt->bindParam(':nome_mae', $pessoa['nome_mae']);
+    $stmt->bindParam(':telefone', $pessoa['telefone']);
+    $stmt->bindParam(':email', $pessoa['email']);
+
     return $stmt->execute();
 }
+
+include '../app/Views/pesquisa.php';
 ?>

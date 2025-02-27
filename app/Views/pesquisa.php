@@ -1,12 +1,12 @@
+<?php
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pesquisa de Pessoas</title>
 </head>
-
 <body>
     <h1>Pesquisa de Pessoas</h1>
     <form method="GET" action="index.php">
@@ -24,7 +24,6 @@
         <p>Nenhuma pessoa encontrada.</p>
     <?php endif; ?>
 
-    <a href="index.php?action=cadastro">Cadastrar Nova Pessoa</a>
+    <a href="/../cadastro_pessoas/app/Views/cadastroPessoa.php">Realizar Novo Cadastro</a>
 </body>
-
 </html>
