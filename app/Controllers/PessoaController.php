@@ -1,0 +1,40 @@
+<?php
+require_once '../app/Models/PessoaModel.php';
+
+// Função para exibir a página de cadastro
+function cadastro() {
+    include '../app/Views/cadastro.php';  // Carrega a view de cadastro
+}
+
+// Função para exibir a pesquisa
+function pesquisa() {
+    if (isset($_GET['pesquisar']) && !empty($_GET['pesquisar'])) {
+        $pessoas = buscarPessoas($_GET['pesquisar']);
+    } else {
+        $pessoas = [];
+    }
+    include '../app/Views/pesquisa.php';  // Carrega a view de pesquisa
+}
+
+// Função para cadastrar pessoa
+function cadastrarPessoa() {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $dados = [
+            'nome' => $_POST['nome'],
+            'nome_social' => $_POST['nome_social'],
+            'cpf' => $_POST['cpf'],
+            'nome_pai' => $_POST['nome_pai'],
+            'nome_mae' => $_POST['nome_mae'],
+            'telefone' => $_POST['telefone'],
+            'email' => $_POST['email']
+        ];
+
+        // Chama a função para salvar no banco de dados
+        if (cadastrarPessoaNoBanco($dados)) {
+            echo "Pessoa cadastrada com sucesso!";
+        } else {
+            echo "Erro ao cadastrar pessoa.";
+        }
+    }
+}
+?>

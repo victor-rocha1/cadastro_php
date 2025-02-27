@@ -18,6 +18,6 @@
         <button type="submit">Cadastrar</button>
     </form>
 
-    <a href="pesquisa.php">Voltar para Pesquisa</a>
+    <a href="index.php">Voltar para Pesquisa</a>
 </body>
 </html>
