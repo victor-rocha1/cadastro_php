@@ -9,22 +9,40 @@
 
 <body>
     <h1>Pesquisa de Pessoas</h1>
-    <form method="GET" action="index.php">
-        <input type="text" name="pesquisar" placeholder="Pesquisar por nome ou CPF" value="<?= isset($_GET['pesquisar']) ? $_GET['pesquisar'] : '' ?>">
+    
+    <!-- Formulário de Pesquisa -->
+    <form method="GET" action="index.php?action=pesquisa">
+        <input type="text" name="pesquisar" placeholder="Pesquisar por nome ou CPF" 
+               value="<?= isset($_GET['pesquisar']) ? htmlspecialchars($_GET['pesquisar']) : '' ?>" 
+               required>
         <button type="submit">Pesquisar</button>
     </form>
 
-    <?php if (isset($pessoas) && !empty($pessoas)): ?>
-        <ul>
-            <?php foreach ($pessoas as $pessoa): ?>
-                <li>Nome: <?= $pessoa['nome'] ?> | CPF: <?= $pessoa['cpf'] ?></li>
-            <?php endforeach; ?>
-        </ul>
+    <?php
+    // Verificando se a variável 'pesquisar' foi enviada e não está vazia
+    if (isset($_GET['pesquisar']) && !empty($_GET['pesquisar'])):
+        $pesquisar = $_GET['pesquisar'];
+        // Chama a função de busca passando o termo de pesquisa
+        $pessoas = buscarPessoas($pesquisar);
+    ?>
+
+        <!-- Exibe os resultados da pesquisa -->
+        <?php if (!empty($pessoas)): ?>
+            <ul>
+                <?php foreach ($pessoas as $pessoa): ?>
+                    <li>Nome: <?= htmlspecialchars($pessoa['nome']) ?> | CPF: <?= htmlspecialchars($pessoa['cpf']) ?></li>
+                <?php endforeach; ?>
+            </ul>
+        <?php else: ?>
+            <p>Nenhuma pessoa encontrada para o termo: "<?= htmlspecialchars($pesquisar) ?>"</p>
+        <?php endif; ?>
+
     <?php else: ?>
-        <p>Nenhuma pessoa encontrada.</p>
+        <p>Por favor, insira um termo de pesquisa.</p>
     <?php endif; ?>
 
     <a href="index.php?action=cadastro">Realizar Novo Cadastro</a>
+
 </body>
 
 </html>
