@@ -1,9 +1,9 @@
 <?php
 function conectarBanco() {
-    $host = 'localhost';  // Host do banco de dados
-    $db_name = 'cadastro_pessoas';  // Nome do banco de dados
-    $username = 'root';  // Usuário do banco de dados
-    $password = '';  // Senha do banco de dados
+    $host = 'localhost:8080';  
+    $db_name = 'cadastro_pessoas';  
+    $username = 'root';  
+    $password = '';  
 
     try {
         return new PDO("mysql:host={$host};dbname={$db_name}", $username, $password);

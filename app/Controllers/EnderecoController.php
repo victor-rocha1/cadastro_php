@@ -1,7 +1,8 @@
 <?php
+// app/Controllers/EnderecoController.php
+
 require_once '../app/Models/EnderecoModel.php';
 
-// Função para cadastrar o endereço
 function cadastrarEndereco() {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Array com os dados do form de endereço
@@ -20,7 +21,7 @@ function cadastrarEndereco() {
             echo "Endereço cadastrado com sucesso!";
             // Redireciona para a pesquisa
             header('Location: index.php?action=pesquisa');
-            exit;
+            exit;  // Certifica-se de que a execução do código pare após o redirecionamento
         } else {
             echo "Erro ao cadastrar endereço.";
         }
