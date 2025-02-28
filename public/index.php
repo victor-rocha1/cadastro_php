@@ -6,12 +6,17 @@ require_once '../app/Models/EnderecoModel.php';
 $action = isset($_GET['action']) ? $_GET['action'] : '';
 
 // Verifica se a ação é cadastro de pessoa
-if ($action === 'cadastro') {
-    include '../app/Views/cadastroPessoa.php';  // Exibe o formulário de cadastro de pessoa
+if ($action === '') {
+    include '../app/Views/pesquisa.php';  
 }
+
+elseif ($action === 'cadastro') {
+    include '../app/Views/cadastroPessoa.php';  
+}
+
 // Verifica se a ação é cadastro de endereço
 elseif ($action === 'cadastroEndereco') {
-    include '../app/Views/cadastroEndereco.php';  // Exibe o formulário de cadastro de endereço
+    include '../app/Views/cadastroEndereco.php';  
 }
 // Verifica se a ação é pesquisa
 elseif ($action === 'pesquisa') {
