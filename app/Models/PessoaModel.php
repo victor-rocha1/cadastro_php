@@ -1,7 +1,8 @@
 <?php
 require_once '../app/Helpers/Database.php';
 
-function buscarPessoas($pesquisar) {
+function buscarPessoas($pesquisar)
+{
     $conn = conectarBanco();
     $sql = "SELECT * FROM pessoas WHERE nome LIKE :pesquisar OR cpf = :pesquisar";
     $stmt = $conn->prepare($sql);
@@ -10,21 +11,23 @@ function buscarPessoas($pesquisar) {
     return $stmt->fetchAll();
 }
 
-function cadastrarPessoa($pessoa) {
+function cadastrarPessoa($pessoa)
+{
     try {
         $conn = conectarBanco();
         $sql = "INSERT INTO pessoas (nome, nome_social, cpf, nome_pai, nome_mae, telefone, email)
                 VALUES (:nome, :nome_social, :cpf, :nome_pai, :nome_mae, :telefone, :email)";
-
         $stmt = $conn->prepare($sql);
 
         foreach ($pessoa as $campo => $valor) {
             $stmt->bindValue(":$campo", $valor);
         }
 
-        return $stmt->execute();
+        if ($stmt->execute()) {
+            return $conn->lastInsertId();
+        }
+        return false;
     } catch (Exception $e) {
         die("Erro ao cadastrar pessoa: " . $e->getMessage());
     }
 }
-?>

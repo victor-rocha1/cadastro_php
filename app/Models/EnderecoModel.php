@@ -4,8 +4,8 @@ require_once '../app/Helpers/Database.php';
 function salvarEndereco($endereco) {
     try {
         $conn = conectarBanco();
-        $sql = "INSERT INTO enderecos (cep, logradouro, numero, complemento, bairro, estado, cidade)
-                VALUES (:cep, :logradouro, :numero, :complemento, :bairro, :estado, :cidade)";
+        $sql = "INSERT INTO enderecos (id_pessoa, cep, logradouro, numero, complemento, bairro, estado, cidade)
+                VALUES (:id_pessoa, :cep, :logradouro, :numero, :complemento, :bairro, :estado, :cidade)";
         $stmt = $conn->prepare($sql);
 
         foreach ($endereco as $campo => $valor) {

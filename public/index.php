@@ -1,19 +1,22 @@
 <?php
-require_once '../app/Models/PessoaModel.php';
-require_once '../app/Models/EnderecoModel.php';
+require_once '../app/Controllers/PessoaController.php';
+require_once '../app/Controllers/EnderecoController.php';
 
 $action = isset($_GET['action']) ? $_GET['action'] : '';
 
-if ($action === 'cadastro') {
-    include '../app/Controllers/PessoaController.php';
+if ($action === '') {
+    include '../app/Views/pesquisa.php';  
+} elseif ($action === 'cadastro') {
     cadastro();
 } elseif ($action === 'cadastroEndereco') {
-    include '../app/Controllers/EnderecoController.php';
     cadastrarEndereco();
 } elseif ($action === 'pesquisa') {
-    $pessoas = isset($_GET['pesquisar']) ? buscarPessoas($_GET['pesquisar']) : [];
-    include '../app/Views/pesquisa.php';
-} else {
+    if (isset($_GET['pesquisar']) && !empty($_GET['pesquisar'])) {
+        $pesquisar = $_GET['pesquisar'];
+        $pessoas = buscarPessoas($pesquisar);
+    } else {
+        $pessoas = [];
+    }
     include '../app/Views/pesquisa.php';
 }
 ?>
