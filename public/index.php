@@ -5,7 +5,7 @@ require_once '../app/Controllers/EnderecoController.php';
 $action = isset($_GET['action']) ? $_GET['action'] : '';
 
 if ($action === '') {
-    include '../app/Views/pesquisa.php';  
+    include '../app/Views/pesquisa.php';
 } elseif ($action === 'cadastro') {
     cadastro();
 } elseif ($action === 'cadastroEndereco') {

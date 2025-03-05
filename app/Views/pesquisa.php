@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,24 +8,29 @@
 
 <body>
     <h1>Pesquisa de Pessoas</h1>
-    <form method="GET" action="index.php?action=pesquisa">
-        <input type="text" name="pesquisar" placeholder="Pesquisar por nome ou CPF" value="<?= isset($_GET['pesquisar']) ? $_GET['pesquisar'] : '' ?>">
+    <form method="POST" action="index.php">
+        <label for="pesquisar">Pesquisar por nome ou CPF:</label>
+        <input type="text" id="pesquisar" name="pesquisar" placeholder="Digite o nome ou CPF" value="<?= isset($_POST['pesquisar']) ? $_POST['pesquisar'] : '' ?>" required>
         <button type="submit">Pesquisar</button>
     </form>
 
-    <?php if (isset($pessoas)): ?>
-        <?php if (!empty($pessoas)): ?>
-            <ul>
-                <?php foreach ($pessoas as $pessoa): ?>
-                    <li>Nome: <?= $pessoa['nome'] ?> | CPF: <?= $pessoa['cpf'] ?></li>
-                <?php endforeach; ?>
-            </ul>
-        <?php else: ?>
-            <p>Nenhuma pessoa encontrada.</p>
-        <?php endif; ?>
+    <?php
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pesquisar'])) {
+        $pesquisar = $_POST['pesquisar'];
+        $pessoas = buscarPessoas($pesquisar); // Chama a função de busca
+    }
+
+    if (isset($pessoas) && !empty($pessoas)): ?>
+        <ul>
+            <?php foreach ($pessoas as $pessoa): ?>
+                <li>Nome: <?= htmlspecialchars($pessoa['nome']) ?></li>
+                <li>CPF: <?= htmlspecialchars($pessoa['cpf']) ?></li>
+            <?php endforeach; ?>
+        </ul>
+    <?php elseif (isset($_POST['pesquisar'])): ?>
+        <p>Nenhuma pessoa encontrada para: <?= htmlspecialchars($pesquisar) ?></p>
     <?php endif; ?>
 
     <a href="index.php?action=cadastro">Realizar Novo Cadastro</a>
 </body>
-
 </html>

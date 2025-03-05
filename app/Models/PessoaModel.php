@@ -1,20 +1,22 @@
 <?php
 require_once '../app/Helpers/Database.php';
 
-function buscarPessoas($pesquisar)
-{
-    // Supondo que você tenha uma função conectarBanco() para conectar ao banco
-    $pdo = conectarBanco();
+function buscarPessoas($pesquisar) {
+    try {
+        $conn = conectarBanco(); // Função de conexão com o banco de dados
 
-    // Prepare a consulta SQL para buscar por nome ou CPF
-    $sql = "SELECT * FROM pessoas WHERE nome LIKE :pesquisar OR cpf LIKE :pesquisar";
+        // Preparando a consulta SQL para buscar pelo nome ou CPF, tratando a formatação do CPF
+        $sql = "SELECT * FROM pessoas WHERE nome LIKE :pesquisar OR REPLACE(REPLACE(REPLACE(cpf, '.', ''), '-', ''), ' ', '') LIKE :pesquisar";
+        $stmt = $conn->prepare($sql);
+        $pesquisar = "%" . $pesquisar . "%";  // Adiciona os % para busca parcial
+        $stmt->bindParam(':pesquisar', $pesquisar);
+        $stmt->execute();
 
-    // Prepare e execute a consulta
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute(['pesquisar' => '%' . $pesquisar . '%']);
-
-    // Retorne os resultados
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        // Retorna o resultado sem a mensagem de erro
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (Exception $e) {
+        die("Erro ao buscar pessoas: " . $e->getMessage());
+    }
 }
 
 function cadastrarPessoa($pessoa)
