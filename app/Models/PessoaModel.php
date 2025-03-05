@@ -3,12 +3,18 @@ require_once '../app/Helpers/Database.php';
 
 function buscarPessoas($pesquisar)
 {
-    $conn = conectarBanco();
-    $sql = "SELECT * FROM pessoas WHERE nome LIKE :pesquisar OR cpf = :pesquisar";
-    $stmt = $conn->prepare($sql);
-    $stmt->bindValue(':pesquisar', "%$pesquisar%");
-    $stmt->execute();
-    return $stmt->fetchAll();
+    // Supondo que você tenha uma função conectarBanco() para conectar ao banco
+    $pdo = conectarBanco();
+
+    // Prepare a consulta SQL para buscar por nome ou CPF
+    $sql = "SELECT * FROM pessoas WHERE nome LIKE :pesquisar OR cpf LIKE :pesquisar";
+
+    // Prepare e execute a consulta
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['pesquisar' => '%' . $pesquisar . '%']);
+
+    // Retorne os resultados
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
 function cadastrarPessoa($pessoa)

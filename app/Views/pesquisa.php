@@ -14,17 +14,19 @@
         <button type="submit">Pesquisar</button>
     </form>
 
-    <?php if (isset($pessoas) && !empty($pessoas)): ?>
-        <ul>
-            <?php foreach ($pessoas as $pessoa): ?>
-                <li>Nome: <?= $pessoa['nome'] ?> | CPF: <?= $pessoa['cpf'] ?></li>
-            <?php endforeach; ?>
-        </ul>
-    <?php else: ?>
-        <p>Nenhuma pessoa encontrada.</p>
+    <?php if (isset($pessoas)): ?>
+        <?php if (!empty($pessoas)): ?>
+            <ul>
+                <?php foreach ($pessoas as $pessoa): ?>
+                    <li>Nome: <?= $pessoa['nome'] ?> | CPF: <?= $pessoa['cpf'] ?></li>
+                <?php endforeach; ?>
+            </ul>
+        <?php else: ?>
+            <p>Nenhuma pessoa encontrada.</p>
+        <?php endif; ?>
     <?php endif; ?>
 
     <a href="index.php?action=cadastro">Realizar Novo Cadastro</a>
 </body>
 
-</html> 
+</html>
