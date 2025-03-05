@@ -12,26 +12,27 @@
     <form method="POST" action="index.php?action=cadastroEndereco">
 
         <input type="hidden" name="id_pessoa" value="<?php echo isset($_GET['id_pessoa']) ? $_GET['id_pessoa'] : ''; ?>">
-        <label>CEP:</label>
-        <input type="text" name="cep" required>
 
-        <label>Logradouro:</label>
-        <input type="text" name="logradouro" required>
+        <label for="cep">CEP:</label>
+        <input type="text" name="cep" id="cep" required><br>
 
-        <label>Número:</label>
-        <input type="text" name="numero" required>
+        <label for="logradouro">Logradouro:</label>
+        <input type="text" name="logradouro" id="logradouro" required><br>
 
-        <label>Complemento:</label>
-        <input type="text" name="complemento">
+        <label for="numero">Número:</label>
+        <input type="text" name="numero" id="numero" required><br>
 
-        <label>Bairro:</label>
-        <input type="text" name="bairro" required>
+        <label for="complemento">Complemento:</label>
+        <input type="text" name="complemento" id="complemento"><br>
 
-        <label>Estado:</label>
-        <input type="text" name="estado" required>
+        <label for="bairro">Bairro:</label>
+        <input type="text" name="bairro" id="bairro" required><br>
 
-        <label>Cidade:</label>
-        <input type="text" name="cidade" required>
+        <label for="estado">Estado:</label>
+        <input type="text" name="estado" id="estado" required><br>
+
+        <label for="cidade">Cidade:</label>
+        <input type="text" name="cidade" id="cidade" required><br>
 
         <button type="submit">Finalizar Cadastro</button>
     </form>
