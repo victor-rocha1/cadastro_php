@@ -4,15 +4,19 @@ require_once '../app/Models/Database.php';
 function buscarPessoas($pesquisar) {
     try {
         $conn = conectarBanco(); // Função de conexão com o banco de dados
-
-        // trata tbm os espaços e pontos no cpf
-        $sql = "SELECT DISTINCT * FROM pessoas WHERE nome LIKE :pesquisar OR REPLACE(REPLACE(REPLACE(cpf, '.', ''), '-', ''), ' ', '') LIKE :pesquisar";
+        $sql = "SELECT * FROM pessoas 
+                WHERE nome LIKE :pesquisar 
+                OR REPLACE(REPLACE(REPLACE(cpf, '.', ''), '-', ''), ' ', '') LIKE :pesquisar";
+        
         $stmt = $conn->prepare($sql);
         $pesquisar = "%" . $pesquisar . "%";  // Adiciona os % para busca parcial
         $stmt->bindParam(':pesquisar', $pesquisar);
         $stmt->execute();
 
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        // Retorna os resultados sem duplicados, caso existam
+        $pessoas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return array_map("unserialize", array_unique(array_map("serialize", $pessoas)));
+
     } catch (Exception $e) {
         die("Erro ao buscar pessoas: " . $e->getMessage());
     }

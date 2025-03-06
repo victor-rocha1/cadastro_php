@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pesquisa de Pessoas</title>
+
 </head>
 
 <body>
@@ -21,12 +22,15 @@
     }
 
     if (isset($pessoas) && !empty($pessoas)): ?>
-        <ul>
+        <div>
             <?php foreach ($pessoas as $pessoa): ?>
-                <li>Nome: <?= htmlspecialchars($pessoa['nome']) ?></li>
-                <li>CPF: <?= htmlspecialchars($pessoa['cpf']) ?></li>
+                <div class="resultado">
+                    <h2><strong></strong> <?= htmlspecialchars($pessoa['nome']) ?></h2>
+                    <p><strong>CPF:</strong> <?= htmlspecialchars($pessoa['cpf']) ?></p>
+                </div>
+                <div class="linha-separadora"></div>
             <?php endforeach; ?>
-        </ul>
+        </div>
     <?php elseif (isset($_POST['pesquisar'])): ?>
         <p>Nenhuma pessoa encontrada para: <?= htmlspecialchars($pesquisar) ?></p> 
     <?php endif; ?>
