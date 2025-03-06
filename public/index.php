@@ -4,6 +4,20 @@ require_once '../app/Controllers/EnderecoController.php';
 
 $action = isset($_GET['action']) ? $_GET['action'] : '';
 
+// Início do HTML
+?>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seu Título Aqui</title>
+    <!-- Incluindo o CSS -->
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<?php
 if ($action === '') {
     include '../app/Views/pesquisa.php';
 } elseif ($action === 'cadastro') {
@@ -20,3 +34,6 @@ if ($action === '') {
     include '../app/Views/pesquisa.php';
 }
 ?>
+
+</body>
+</html>
