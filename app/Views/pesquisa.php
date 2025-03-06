@@ -7,10 +7,10 @@
 </head>
 
 <body>
-    <h1>Pesquisa de Pessoas</h1>
+    <h1>Filtrar Pessoas Cadastradas</h1>
     <form method="POST" action="index.php">
-        <label for="pesquisar">Pesquisar por nome ou CPF:</label>
-        <input type="text" id="pesquisar" name="pesquisar" placeholder="Digite o nome ou CPF" value="<?= isset($_POST['pesquisar']) ? $_POST['pesquisar'] : '' ?>" required>
+        <label for="pesquisar">Pesquisar por nome ou CPF:</label><br>
+        <input type="text" id="pesquisar" name="pesquisar" placeholder="Digite o nome ou CPF" value="<?= isset($_POST['pesquisar']) ? $_POST['pesquisar'] : '' ?>" required> <br>
         <button type="submit">Pesquisar</button>
     </form>
 
@@ -28,7 +28,7 @@
             <?php endforeach; ?>
         </ul>
     <?php elseif (isset($_POST['pesquisar'])): ?>
-        <p>Nenhuma pessoa encontrada para: <?= htmlspecialchars($pesquisar) ?></p>
+        <p>Nenhuma pessoa encontrada para: <?= htmlspecialchars($pesquisar) ?></p> 
     <?php endif; ?>
 
     <a href="index.php?action=cadastro">Realizar Novo Cadastro</a>
