@@ -5,31 +5,36 @@ body {
     margin: 0;
     padding: 20px;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    min-height: 100vh;  
+    flex-direction: column;
 }
 
-/* Estilo do cabeçalho */
 h1 {
     margin-bottom: 20px;
     font-weight: bold;
+    text-align: center;
+    color: #333;
 }
 
 /* Estilo do formulário */
 form {
     background: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    text-align: center;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px; /* Max largura do formulário */
+    text-align: left; /* Ajustando alinhamento do conteúdo do formulário */
 }
 
 /* Estilos label e inputs */
 label {
     display: block;
     font-weight: bold;
-    text-align: center;
+    margin-bottom: 5px;
+    color: #333;
 }
 
 input[type="text"],
@@ -37,10 +42,11 @@ input[type="tel"],
 input[type="email"] {
     width: 100%;
     padding: 10px;
-    margin-bottom: 10px; 
+    margin-bottom: 20px;  /* Aumentando o espaçamento entre os campos */
     border: 1px solid #ccc;
     border-radius: 5px;
-    box-sizing: border-box; 
+    box-sizing: border-box;
+    font-size: 16px;
 }
 
 /* Estilo do botão */
@@ -49,11 +55,12 @@ button {
     color: white;
     font-weight: bold;
     border: none;
-    padding: 10px 15px;
+    padding: 12px 15px;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
-    width: 100%; 
+    width: 100%;
+    font-size: 16px; /* Ajustando o tamanho da fonte */
 }
 
 button:hover {
