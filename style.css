@@ -15,18 +15,17 @@ h1 {
     margin-bottom: 20px;
     font-weight: bold;
     text-align: center;
-    color: #333;
 }
 
-/* Estilo do formulário */
+/* formulário */
 form {
     background: #fff;
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 400px; /* Max largura do formulário */
-    text-align: left; /* Ajustando alinhamento do conteúdo do formulário */
+    max-width: 400px; /* largura do formulário */
+    text-align: left; /* texto alinhado á esquerda */
 }
 
 /* Estilos label e inputs */
@@ -42,7 +41,7 @@ input[type="tel"],
 input[type="email"] {
     width: 100%;
     padding: 10px;
-    margin-bottom: 20px;  /* Aumentando o espaçamento entre os campos */
+    margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
@@ -60,7 +59,7 @@ button {
     cursor: pointer;
     transition: background-color 0.3s;
     width: 100%;
-    font-size: 16px; /* Ajustando o tamanho da fonte */
+    font-size: 16px;
 }
 
 button:hover {
@@ -69,6 +68,7 @@ button:hover {
 
 /* Estilo dos resultados */
 .resultado {
+    max-width: 100%;
     background: #fff;
     padding: 15px;
     margin: 10px 0;
