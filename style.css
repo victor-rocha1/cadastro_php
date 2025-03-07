@@ -11,8 +11,8 @@ body {
 
 /* Estilo do cabeçalho */
 h1 {
-    color: #333;
     margin-bottom: 20px;
+    font-weight: bold;
 }
 
 /* Estilo do formulário */
@@ -25,11 +25,11 @@ form {
     text-align: center;
 }
 
-/* Estilo dos rótulos e campos de entrada */
+/* Estilos label e inputs */
 label {
     display: block;
     font-weight: bold;
-    text-align: center; /* Centraliza o texto do rótulo */
+    text-align: center;
 }
 
 input[type="text"],
@@ -37,16 +37,17 @@ input[type="tel"],
 input[type="email"] {
     width: 100%;
     padding: 10px;
-    margin-bottom: 10px; /* Mantém uma margem inferior para o input */
+    margin-bottom: 10px; 
     border: 1px solid #ccc;
     border-radius: 5px;
-    box-sizing: border-box; /* Inclui padding e border no cálculo da largura */
+    box-sizing: border-box; 
 }
 
 /* Estilo do botão */
 button {
     background-color: #28a745;
     color: white;
+    font-weight: bold;
     border: none;
     padding: 10px 15px;
     border-radius: 5px;
@@ -68,14 +69,14 @@ button:hover {
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilo do link */
+/* Link */
 a {
     display: block;
     margin-top: 20px;
     color: #007bff;
     text-decoration: none;
     font-weight: bold;
-    text-align: center; /* Centraliza o texto do link */
+    text-align: center; 
 }
 
 a:hover {
