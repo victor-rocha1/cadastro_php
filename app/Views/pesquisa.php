@@ -32,7 +32,7 @@
             <?php endforeach; ?>
         </div>
     <?php elseif (isset($_POST['pesquisar'])): ?>
-        <p>Nenhuma pessoa encontrada para: <?= htmlspecialchars($pesquisar) ?></p> 
+        <p style="color:red",>Nenhuma pessoa encontrada para: <?= htmlspecialchars($pesquisar) ?></p> 
     <?php endif; ?>
 
     <a href="index.php?action=cadastro">Realizar Novo Cadastro</a>
