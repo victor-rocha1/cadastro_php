@@ -13,26 +13,26 @@
 
         <input type="hidden" name="id_pessoa" value="<?php echo isset($_GET['id_pessoa']) ? $_GET['id_pessoa'] : ''; ?>">
 
-        <label for="cep">CEP:</label><br>
-        <input type="text" name="cep" id="cep" required><br>
+        <label for="cep">CEP:</label>
+        <input type="text" name="cep" id="cep" required>
 
-        <label for="logradouro">Logradouro:</label><br>
-        <input type="text" name="logradouro" id="logradouro" required><br>
+        <label for="logradouro">Logradouro:</label>
+        <input type="text" name="logradouro" id="logradouro" required>
 
-        <label for="numero">Número:</label><br>
-        <input type="text" name="numero" id="numero" required><br>
+        <label for="numero">Número:</label>
+        <input type="text" name="numero" id="numero" required>
 
-        <label for="complemento">Complemento:</label><br>
-        <input type="text" name="complemento" id="complemento"><br>
+        <label for="complemento">Complemento:</label>
+        <input type="text" name="complemento" id="complemento">
 
-        <label for="bairro">Bairro:</label><br>
-        <input type="text" name="bairro" id="bairro" required><br>
+        <label for="bairro">Bairro:</label>
+        <input type="text" name="bairro" id="bairro" required>
 
-        <label for="estado">Estado:</label><br>
-        <input type="text" name="estado" id="estado" required><br>
+        <label for="estado">Estado:</label>
+        <input type="text" name="estado" id="estado" required>
 
-        <label for="cidade">Cidade:</label><br>
-        <input type="text" name="cidade" id="cidade" required><br>
+        <label for="cidade">Cidade:</label>
+        <input type="text" name="cidade" id="cidade" required>
 
         <button type="submit">Finalizar Cadastro</button>
     </form>
