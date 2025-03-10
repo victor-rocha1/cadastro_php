@@ -38,24 +38,20 @@ Os dados do endereço incluem:
 
 ## Estrutura do Projeto
 ```
-projeto-login-php/
+cadsatro_pessoa/
 ├── app/
 │   ├── Controllers/
-│   │   └── AuthController.php
+│   │   └── PessoaController.php
+│   │   └── EnderecoController.php
 │   ├── Models/
-│   │   └── UserModel.php
+│   │   └── Database.php
+│   │   └── EnderecoModel.php
+│   │   └── PessoaModel.php
 │   ├── Views/
-│   │   ├── login.php
-│   │   ├── home.php
-│   │   └── layout/
-│   │       └── header.php
-│   └── Helpers/
-│       └── Database.php
+│   │   ├── cadsatroEndereco.php
+│   │   ├── cadsatroPessoa.php
 ├── public/
 │   └── index.php
-├── routes/
-│   └── web.php
-├── composer.json
 └── style.css
 ```
 
