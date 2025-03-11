@@ -8,8 +8,7 @@ function salvarEndereco($endereco) {
                 VALUES (:id_pessoa, :cep, :logradouro, :numero, :complemento, :bairro, :estado, :cidade)";
         $stmt = $conn->prepare($sql);
 
-        
-        // Para cada campo (como endereco, cep, etc.), ele usa o método bindValue para associar o valor correspondente ao parâmetro da consulta SQL
+
         foreach ($endereco as $campo => $valor) {
             $stmt->bindValue(":$campo", $valor);
         }

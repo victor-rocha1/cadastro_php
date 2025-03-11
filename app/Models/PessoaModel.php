@@ -3,13 +3,13 @@ require_once '../app/Models/Database.php';
 
 function buscarPessoas($pesquisar) {
     try {
-        $conn = conectarBanco(); // Função de conexão com o banco de dados
+        $conn = conectarBanco(); // função de conexão com o banco de dados
         $sql = "SELECT * FROM pessoas 
                 WHERE nome LIKE :pesquisar 
                 OR REPLACE(REPLACE(REPLACE(cpf, '.', ''), '-', ''), ' ', '') LIKE :pesquisar";
         
         $stmt = $conn->prepare($sql);
-        $pesquisar = "%" . $pesquisar . "%";  // Adiciona os % para busca parcial
+        $pesquisar = "%" . $pesquisar . "%";  // adiciona os % para busca parcial
         $stmt->bindParam(':pesquisar', $pesquisar);
         $stmt->execute();
 
@@ -30,8 +30,7 @@ function cadastrarPessoa($pessoa)
                 VALUES (:nome, :nome_social, :cpf, :nome_pai, :nome_mae, :telefone, :email)";
         $stmt = $conn->prepare($sql);
 
-
-        // Para cada campo (como nome, cpf, etc.), ele usa o método bindValue para associar o valor correspondente ao parâmetro da consulta SQL
+        
         foreach ($pessoa as $campo => $valor) {
             $stmt->bindValue(":$campo", $valor);
         }

@@ -16,7 +16,7 @@ $action = isset($_GET['action']) ? $_GET['action'] : '';
 <body>
 
 <?php
-if ($action === '') {
+if ($action === '') {  //dependendo do que estiver na url, vai para a página da função
     include '../app/Views/pesquisa.php';
 } elseif ($action === 'cadastro') {
     cadastro();
