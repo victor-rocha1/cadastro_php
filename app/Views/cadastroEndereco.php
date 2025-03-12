@@ -37,6 +37,41 @@
         <button type="submit">Finalizar Cadastro</button>
     </form>
 
+    <script>
+        <?php
+        // Incluindo a configuração da API
+        $config = include('api.php');
+        $apiUrl = $config['api_url'];
+        ?>
+
+        document.getElementById('cep').addEventListener('blur', function () {
+            var cep = this.value.replace(/\D/g, ''); // remove tudo o que não é número
+
+            if (cep.length !== 8) {
+                alert("CEP inválido!");
+                return;
+            }
+
+            // Faz a requisição para a API ViaCEP
+            fetch('<?php echo $apiUrl; ?>' + cep + '/json/')
+                .then(response => response.json())
+                .then(data => {
+                    if (!data.erro) {
+                        // Preenche os campos do formulário com os dados retornados da API
+                        document.getElementById('logradouro').value = data.logradouro;
+                        document.getElementById('bairro').value = data.bairro;
+                        document.getElementById('cidade').value = data.localidade;
+                        document.getElementById('estado').value = data.uf;
+                    } else {
+                        alert("CEP não encontrado!");
+                    }
+                })
+                .catch(error => {
+                    console.error("Erro ao buscar endereço:", error);
+                    alert("Erro ao buscar endereço!");
+                });
+        });
+    </script>
 </body>
 
 </html>
