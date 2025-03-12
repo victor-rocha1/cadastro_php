@@ -8,7 +8,7 @@ function conectarBanco() {
 
     try {
         $conn = new PDO("mysql:host={$host};port={$port};dbname={$db_name};charset=utf8", $username, $password, [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, // Exibe erros
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, // para exibir erros
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC 
         ]);
         return $conn;

@@ -39,12 +39,12 @@
 
     <script>
         <?php
-        // Incluindo a configuração da API
+        // config da api
         $config = include('api.php');
         $apiUrl = $config['api_url'];
         ?>
 
-        // JS
+        // JS para usar a api
         document.getElementById('cep').addEventListener('blur', function () {
             var cep = this.value.replace(/\D/g, ''); // remove tudo o que não é número
 
@@ -53,12 +53,12 @@
                 return;
             }
 
-            // Faz a requisição para a API ViaCEP
+            // chama a API ViaCEP
             fetch('<?php echo $apiUrl; ?>' + cep + '/json/')
                 .then(response => response.json())
                 .then(data => {
                     if (!data.erro) {
-                        // Preenche os campos do formulário com os dados retornados da API
+                        // Preenche os campos do formulário automaticamente
                         document.getElementById('logradouro').value = data.logradouro;
                         document.getElementById('bairro').value = data.bairro;
                         document.getElementById('cidade').value = data.localidade;

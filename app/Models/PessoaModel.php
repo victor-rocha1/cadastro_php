@@ -13,7 +13,7 @@ function buscarPessoas($pesquisar) {
         $stmt->bindParam(':pesquisar', $pesquisar);
         $stmt->execute();
 
-        // Retorna os resultados sem duplicados, caso existam
+        // retorna os resultados sem duplicados, caso tenha
         $pessoas = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return array_map("unserialize", array_unique(array_map("serialize", $pessoas)));
 

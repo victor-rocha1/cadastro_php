@@ -26,7 +26,7 @@
             <?php foreach ($pessoas as $pessoa): ?>
                 <div class="resultado">
                     <h2><strong></strong> <?= htmlspecialchars($pessoa['nome']) ?></h2>
-                    <p><strong>CPF:</strong> <?= htmlspecialchars($pessoa['cpf']) ?></p>
+                    <p><strong>Email:</strong> <?= htmlspecialchars($pessoa['email']) ?></p>
                 </div>
                 <div class="linha-separadora"></div>
             <?php endforeach; ?>

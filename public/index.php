@@ -4,7 +4,6 @@ require_once '../app/Controllers/EnderecoController.php';
 
 $action = isset($_GET['action']) ? $_GET['action'] : '';
 
-// Início do HTML
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
