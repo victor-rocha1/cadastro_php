@@ -44,6 +44,7 @@
         $apiUrl = $config['api_url'];
         ?>
 
+        // JS
         document.getElementById('cep').addEventListener('blur', function () {
             var cep = this.value.replace(/\D/g, ''); // remove tudo o que não é número
 
